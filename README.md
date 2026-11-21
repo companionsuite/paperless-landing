@@ -23,11 +23,11 @@ npm run build
 
 ## Deploy to Cloudflare
 
-Requires `cf` CLI logged in with access to account `f3be1a37b43f47457e03c12e80907ae8` and zone `milliways.si`.
+Requires `cf` CLI logged in with access to account `653f507ee5697b23ccd9afb9a000b267` and zone `milliways.si` (`8a6055ebc3ceefad42961a9de2683a75`).
 
 ```bash
 npm run build
-CLOUDFLARE_ACCOUNT_ID=f3be1a37b43f47457e03c12e80907ae8 cf deploy dist
+CLOUDFLARE_ACCOUNT_ID=653f507ee5697b23ccd9afb9a000b267 CLOUDFLARE_ZONE_ID=8a6055ebc3ceefad42961a9de2683a75 cf deploy dist
 ```
 
 ## Regenerating App Store Screenshots
