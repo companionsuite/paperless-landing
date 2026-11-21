@@ -119,6 +119,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 >
                   Explore Features
                 </a>
+                <a
+                  href="/connect"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/connect');
+                  }}
+                  className="inline-flex items-center gap-2 rounded-xl border border-[var(--border-strong)] bg-[var(--bg-surface-1)] px-5 py-3 text-sm font-semibold text-[var(--ink-primary)] transition hover:bg-[var(--bg-surface-2)]"
+                >
+                  How to Connect
+                </a>
               </div>
 
               <ul className="mt-8 grid gap-2.5 text-sm text-[var(--ink-secondary)] sm:grid-cols-2">
@@ -248,6 +258,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 or reporting a bug? Reach out via email or open an issue on GitHub.
               </p>
               <div className="mt-5 flex flex-wrap gap-3 text-sm">
+                <button
+                  type="button"
+                  onClick={() => onNavigate('/connect')}
+                  className="font-medium text-[var(--accent-600)] underline underline-offset-2 dark:text-[var(--accent-400)]"
+                >
+                  How to Connect
+                </button>
+                <span className="text-[var(--ink-muted)]">&middot;</span>
                 <button
                   type="button"
                   onClick={() => onNavigate('/privacy')}

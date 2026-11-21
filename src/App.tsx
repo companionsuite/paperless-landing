@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { SITE_CONFIG } from './config/site';
 import { LandingPage } from './pages/LandingPage';
+import { ConnectPage } from './pages/ConnectPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
 
@@ -65,6 +66,20 @@ export const App: React.FC = () => {
 
           <nav className="flex items-center gap-1 sm:gap-2">
             <a
+              href="/connect"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/connect');
+              }}
+              className={`rounded-lg px-3 py-1.5 text-sm font-medium transition ${
+                path === '/connect' || path === '/setup'
+                  ? 'bg-[var(--accent-50)] text-[var(--accent-600)] dark:text-[var(--accent-400)]'
+                  : 'text-[var(--ink-secondary)] hover:bg-[var(--bg-surface-2)] hover:text-[var(--ink-primary)]'
+              }`}
+            >
+              Connect
+            </a>
+            <a
               href="/privacy"
               onClick={(e) => {
                 e.preventDefault();
@@ -105,7 +120,9 @@ export const App: React.FC = () => {
       </header>
 
       <main className="flex-1">
-        {path === '/privacy' ? (
+        {path === '/connect' || path === '/setup' ? (
+          <ConnectPage onNavigate={navigate} />
+        ) : path === '/privacy' ? (
           <PrivacyPage onNavigate={navigate} />
         ) : path === '/terms' ? (
           <TermsPage onNavigate={navigate} />
@@ -127,6 +144,16 @@ export const App: React.FC = () => {
               className="hover:text-[var(--ink-primary)]"
             >
               Home
+            </a>
+            <a
+              href="/connect"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/connect');
+              }}
+              className="hover:text-[var(--ink-primary)]"
+            >
+              How to Connect
             </a>
             <a
               href="/privacy"
