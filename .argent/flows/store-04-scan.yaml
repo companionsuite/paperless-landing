@@ -1,0 +1,15 @@
+steps:
+  - launch: com.paperlesscompanion.app
+  - await:
+      visible:
+        text: Demo workspace active
+  - tap:
+      text: Scan
+  - await:
+      visible:
+        text: 2. Page Order & PDF Build
+  - tap:
+      text: + Utility Bill
+  - wait: 800
+  - await:
+      idle: true
