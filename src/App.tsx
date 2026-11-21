@@ -149,7 +149,7 @@ export const App: React.FC = () => {
               Terms of Use
             </a>
             <a
-              href={SITE_CONFIG.sourceRepoUrl}
+              href={SITE_CONFIG.issuesRepoUrl}
               target="_blank"
               rel="noreferrer"
               className="hover:text-[var(--ink-primary)]"

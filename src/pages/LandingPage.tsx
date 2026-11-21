@@ -3,7 +3,6 @@ import {
   Camera,
   CheckCircle2,
   Download,
-  ExternalLink,
   FolderLock,
   Github,
   Mail,
@@ -52,7 +51,7 @@ const FEATURES = [
   },
   {
     icon: FolderLock,
-    title: 'Zero Tracking, Open Source',
+    title: 'Zero Tracking, Private by Design',
     description:
       'No developer servers, no analytics, and no ads. Your credentials and documents stay between your iPhone and your own Paperless-ngx instance.',
   },
@@ -115,14 +114,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                   Download on App Store
                 </a>
                 <a
-                  href={SITE_CONFIG.sourceRepoUrl}
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#features"
                   className="inline-flex items-center gap-2 rounded-xl border border-[var(--border-strong)] bg-[var(--bg-surface-1)] px-5 py-3 text-sm font-semibold text-[var(--ink-primary)] transition hover:bg-[var(--bg-surface-2)]"
                 >
-                  <Github className="h-4 w-4" />
-                  View Source
-                  <ExternalLink className="h-3.5 w-3.5 text-[var(--ink-muted)]" />
+                  Explore Features
                 </a>
               </div>
 

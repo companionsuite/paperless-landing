@@ -93,52 +93,43 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
           </h2>
           <p className="mt-3">
             AI taxonomy classification is <strong>disabled in the native iOS app</strong>. If you separately
-            deploy and use the self-hosted web/PWA companion server from the open-source repository and
-            explicitly trigger AI classification, document text/images and your taxonomy list are sent either
-            to <strong>Google Gemini</strong> (using your own self-hosted <code>GEMINI_API_KEY</code>) or to
-            your own self-hosted OpenAI-compatible LLM endpoint (such as Ollama), depending on your setting.
+            deploy and use a self-hosted web/PWA companion server and explicitly trigger AI classification,
+            document text/images and your taxonomy list are sent either to <strong>Google Gemini</strong>{' '}
+            (using your own self-hosted <code>GEMINI_API_KEY</code>) or to your own self-hosted
+            OpenAI-compatible LLM endpoint (such as Ollama), depending on your setting.
           </p>
         </section>
 
         <section className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-1)] p-6">
           <h2 className="font-display text-lg font-semibold text-[var(--ink-primary)]">
-            6. Contact &amp; Source Transparency
+            6. Contact &amp; Support
           </h2>
           <p className="mt-3">
-            {SITE_CONFIG.appName} is open-source at{' '}
+            For privacy questions or support, email{' '}
             <a
-              href={SITE_CONFIG.sourceRepoUrl}
+              href={`mailto:${SITE_CONFIG.supportEmail}`}
+              className="font-medium text-[var(--accent-600)] underline underline-offset-2 dark:text-[var(--accent-400)]"
+            >
+              {SITE_CONFIG.supportEmail}
+            </a>{' '}
+            or open an issue on{' '}
+            <a
+              href={`${SITE_CONFIG.issuesRepoUrl}/issues`}
               target="_blank"
               rel="noreferrer"
               className="font-medium text-[var(--accent-600)] underline underline-offset-2 dark:text-[var(--accent-400)]"
             >
-              github.com/companionsuite/paperless-ngx-companion
+              GitHub
             </a>
-            . For privacy questions or support,{' '}
-            {SITE_CONFIG.supportEmail ? (
-              <>
-                email{' '}
-                <a
-                  href={`mailto:${SITE_CONFIG.supportEmail}`}
-                  className="font-medium text-[var(--accent-600)] underline underline-offset-2 dark:text-[var(--accent-400)]"
-                >
-                  {SITE_CONFIG.supportEmail}
-                </a>
-                .
-              </>
-            ) : (
-              <>
-                visit our{' '}
-                <button
-                  type="button"
-                  onClick={() => onNavigate('/#support')}
-                  className="font-medium text-[var(--accent-600)] underline underline-offset-2 dark:text-[var(--accent-400)]"
-                >
-                  Support section
-                </button>
-                .
-              </>
-            )}
+            . You can also return to the{' '}
+            <button
+              type="button"
+              onClick={() => onNavigate('/#support')}
+              className="font-medium text-[var(--accent-600)] underline underline-offset-2 dark:text-[var(--accent-400)]"
+            >
+              Support section
+            </button>
+            .
           </p>
         </section>
       </div>

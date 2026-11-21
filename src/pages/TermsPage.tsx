@@ -90,12 +90,12 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
               </a>
             ) : (
               <a
-                href={SITE_CONFIG.sourceRepoUrl}
+                href={`${SITE_CONFIG.issuesRepoUrl}/issues`}
                 target="_blank"
                 rel="noreferrer"
                 className="font-medium text-[var(--accent-600)] underline underline-offset-2 dark:text-[var(--accent-400)]"
               >
-                our GitHub repository
+                our support page
               </a>
             )}
             .
