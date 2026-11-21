@@ -4,6 +4,7 @@ export const SITE_CONFIG = {
   appStoreId: '6836218613',
   appStoreUrl: 'https://apps.apple.com/app/id6836218613',
   sourceRepoUrl: 'https://github.com/companionsuite/paperless-ngx-companion',
+  issuesRepoUrl: 'https://github.com/companionsuite/paperless-landing',
   siteUrl: 'https://paperless.milliways.si',
   supportEmail: 'support.paperless@milliways.si',
 } as const;

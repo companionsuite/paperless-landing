@@ -282,7 +282,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 </a>
               )}
               <a
-                href={`${SITE_CONFIG.sourceRepoUrl}/issues`}
+                href={`${SITE_CONFIG.issuesRepoUrl}/issues`}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-strong)] bg-[var(--bg-surface-2)] px-5 py-3 text-sm font-semibold text-[var(--ink-primary)] transition hover:bg-[var(--bg-surface-3)]"
