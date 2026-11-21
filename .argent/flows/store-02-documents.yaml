@@ -1,0 +1,12 @@
+steps:
+  - launch: com.paperlesscompanion.app
+  - await:
+      visible:
+        text: Demo workspace active
+  - tap:
+      text: Documents
+  - await:
+      visible:
+        text: Archive & Search
+  - await:
+      idle: true

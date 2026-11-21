@@ -1,0 +1,17 @@
+steps:
+  - launch: com.paperlesscompanion.app
+  - await:
+      visible:
+        text: Demo workspace active
+  - tap:
+      text: Documents
+  - await:
+      visible:
+        text: Archive & Search
+  - echo: Tap first demo document card (Pacific Grid Electric Utility Invoice)
+  - tap:
+      x: 0.45
+      y: 0.57
+  - wait: 1000
+  - await:
+      idle: true
