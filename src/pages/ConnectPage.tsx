@@ -318,7 +318,7 @@ export const ConnectPage: React.FC<ConnectPageProps> = ({ onNavigate }) => {
             </h2>
             <p className="mt-1 text-sm leading-relaxed text-[var(--ink-secondary)]">
               No server ready yet? Tap <strong>Explore Demo Sandbox</strong> on the welcome screen
-              to browse sample documents, test the multi-page scanner, and try offline vault
+              to browse sample documents, test the multi-page scanner, and try offline document
               pinning locally on your iPhone. You can connect your real server anytime in{' '}
               <strong>Settings</strong>.
             </p>
