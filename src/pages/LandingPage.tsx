@@ -8,6 +8,7 @@ import {
   Inbox,
   Mail,
   Search,
+  Share,
   Shield,
   WifiOff,
 } from 'lucide-react';
@@ -19,8 +20,10 @@ interface LandingPageProps {
 
 interface PhoneShot {
   src: string;
+  darkSrc?: string;
   alt: string;
   label?: string;
+  hideDynamicIsland?: boolean;
 }
 
 interface IPhoneFrameProps extends PhoneShot {
@@ -30,24 +33,36 @@ interface IPhoneFrameProps extends PhoneShot {
 
 const IPhoneFrame: React.FC<IPhoneFrameProps> = ({
   src,
+  darkSrc,
   alt,
   label,
+  hideDynamicIsland = false,
   eager = false,
   className = '',
 }) => (
   <figure className={`flex flex-col items-center ${className}`}>
     <div className="w-full rounded-[2.25rem] bg-[#161a24] p-2 shadow-xl ring-1 ring-black/15 dark:bg-[#0b0e15] dark:ring-white/15 sm:rounded-[2.5rem] sm:p-2.5">
       <div className="relative overflow-hidden rounded-[1.8rem] bg-black sm:rounded-[2rem]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute top-2 left-1/2 z-10 h-3.5 w-16 -translate-x-1/2 rounded-full bg-black/90 ring-1 ring-white/10 sm:h-4 sm:w-20"
-        />
+        {!hideDynamicIsland && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-2 left-1/2 z-10 h-3.5 w-16 -translate-x-1/2 rounded-full bg-black/90 ring-1 ring-white/10 sm:h-4 sm:w-20"
+          />
+        )}
         <img
           src={src}
           alt={alt}
-          className="block h-auto w-full object-cover"
+          className={`block h-auto w-full object-cover ${darkSrc ? 'dark:hidden' : ''}`}
           loading={eager ? 'eager' : 'lazy'}
         />
+        {darkSrc && (
+          <img
+            src={darkSrc}
+            alt={alt}
+            className="hidden h-auto w-full object-cover dark:block"
+            loading={eager ? 'eager' : 'lazy'}
+          />
+        )}
       </div>
     </div>
     {label && (
@@ -175,7 +190,32 @@ const CHAPTERS = [
     ],
     layout: 'split-right' as const,
   },
-] as const;
+  {
+    id: 'share-sheet',
+    eyebrow: 'Share Sheet & Action',
+    icon: Share,
+    title: 'Save from any app in one tap.',
+    description:
+      'Send PDFs, photos, and documents straight into your Paperless-ngx archive from Photos, Files, Safari, and Mail. Use the Save to Paperless action in the iOS Share Sheet or the Paperless Companion share extension—no extra steps.',
+    chips: [
+      'Save to Paperless Action',
+      'Share Extension',
+      'Photos & Files',
+      'Safari & Mail',
+      'Direct to Archive',
+    ],
+    shots: [
+      {
+        src: '/screenshots/09-share-sheet-light.webp',
+        darkSrc: '/screenshots/10-share-sheet-dark.webp',
+        alt: 'iOS Share Sheet showing the Save to Paperless action in the grouped Actions list',
+        label: 'Save to Paperless Action',
+        hideDynamicIsland: true,
+      },
+    ],
+    layout: 'split-left' as const,
+  },
+];
 
 const FAQ_ITEMS = [
   {
@@ -276,7 +316,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       </section>
 
       {/* Feature Chapters */}
-      <div id="features" className="space-y-6 sm:space-y-10">
+      <div id="features" className="scroll-mt-20 space-y-6 sm:space-y-10">
         {CHAPTERS.map((chapter) => {
           const Icon = chapter.icon;
 
@@ -285,7 +325,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
               <section
                 key={chapter.id}
                 id={chapter.id}
-                className="rounded-3xl bg-[var(--bg-surface-1)] px-5 py-10 shadow-sm ring-1 ring-[var(--border-subtle)] sm:rounded-[2rem] sm:px-10 sm:py-14 lg:px-14"
+                className="scroll-mt-20 rounded-3xl bg-[var(--bg-surface-1)] px-5 py-10 shadow-sm ring-1 ring-[var(--border-subtle)] sm:rounded-[2rem] sm:px-10 sm:py-14 lg:px-14"
               >
                 <div className="max-w-2xl">
                   <div className="inline-flex items-center gap-2 rounded-full bg-[var(--accent-50)] px-3 py-1 text-xs font-semibold text-[var(--accent-600)] dark:text-[var(--accent-400)]">
@@ -366,8 +406,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                   {isSingleShot ? (
                     <IPhoneFrame
                       src={chapter.shots[0].src}
+                      darkSrc={'darkSrc' in chapter.shots[0] ? chapter.shots[0].darkSrc : undefined}
                       alt={chapter.shots[0].alt}
                       label={chapter.shots[0].label}
+                      hideDynamicIsland={
+                        'hideDynamicIsland' in chapter.shots[0]
+                          ? chapter.shots[0].hideDynamicIsland
+                          : false
+                      }
                       className="mx-auto w-full max-w-[280px] sm:max-w-[300px]"
                     />
                   ) : (
@@ -393,7 +439,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       {/* FAQ */}
       <section
         id="faq"
-        className="rounded-3xl bg-[var(--bg-surface-1)] px-5 py-10 shadow-sm ring-1 ring-[var(--border-subtle)] sm:rounded-[2rem] sm:px-10 sm:py-14 lg:px-14"
+        className="scroll-mt-20 rounded-3xl bg-[var(--bg-surface-1)] px-5 py-10 shadow-sm ring-1 ring-[var(--border-subtle)] sm:rounded-[2rem] sm:px-10 sm:py-14 lg:px-14"
       >
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
