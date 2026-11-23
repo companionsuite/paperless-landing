@@ -9,15 +9,15 @@
 
 @layer base {
   :root {
-    --bg-canvas: #f6f7f9;
+    --bg-canvas: #eceff5;
     --bg-surface-1: #ffffff;
-    --bg-surface-2: #f1f3f6;
-    --bg-surface-3: #e6e9ef;
-    --border-subtle: #e4e7ec;
-    --border-strong: #cdd3df;
+    --bg-surface-2: #f3f5f9;
+    --bg-surface-3: #e5e9f2;
+    --border-subtle: #dfe3ec;
+    --border-strong: #c8d0df;
     --ink-primary: #14171f;
-    --ink-secondary: #4e5666;
-    --ink-muted: #6e7787;
+    --ink-secondary: #4a5263;
+    --ink-muted: #687182;
     --accent-50: #eef3ff;
     --accent-100: #dce7ff;
     --accent-400: #5b85f5;
@@ -27,17 +27,17 @@
   }
 
   .dark {
-    --bg-canvas: #090b10;
-    --bg-surface-1: #10141d;
-    --bg-surface-2: #171c28;
-    --bg-surface-3: #202737;
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-strong: rgba(255, 255, 255, 0.16);
+    --bg-canvas: #05070b;
+    --bg-surface-1: #111622;
+    --bg-surface-2: #192030;
+    --bg-surface-3: #222b3f;
+    --border-subtle: rgba(255, 255, 255, 0.09);
+    --border-strong: rgba(255, 255, 255, 0.18);
     --ink-primary: #f3f5f8;
-    --ink-secondary: #9ba3b4;
-    --ink-muted: #6e778a;
-    --accent-50: rgba(52, 102, 232, 0.14);
-    --accent-100: rgba(52, 102, 232, 0.24);
+    --ink-secondary: #a1a9ba;
+    --ink-muted: #768096;
+    --accent-50: rgba(52, 102, 232, 0.16);
+    --accent-100: rgba(52, 102, 232, 0.26);
     --accent-400: #7da0f8;
     --accent-500: #5b85f5;
     --accent-600: #3e6fe8;
@@ -56,7 +56,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  :where(a, button):focus-visible {
+  :where(a, button, summary):focus-visible {
     outline: 2px solid var(--accent-600);
     outline-offset: 2px;
   }
