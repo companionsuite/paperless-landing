@@ -1,8 +1,137 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-  <rect width="512" height="512" rx="112" fill="#2563EB" />
-  <path d="M168 112C150.327 112 136 126.327 136 144V368C136 385.673 150.327 400 168 400H344C361.673 400 376 385.673 376 368V200L288 112H168Z" fill="#FFFFFF" />
-  <path d="M288 112V184C288 192.837 295.163 200 304 200H376L288 112Z" fill="#BFDBFE" />
-  <rect x="184" y="244" width="144" height="22" rx="11" fill="#2563EB" />
-  <rect x="184" y="290" width="112" height="22" rx="11" fill="#60A5FA" />
-  <rect x="184" y="336" width="80" height="22" rx="11" fill="#93C5FD" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" fill="none">
+  <defs>
+    <!-- Rich sapphire-to-indigo background gradient -->
+    <linearGradient id="bgGrad" x1="120" y1="60" x2="920" y2="980" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="52%" stop-color="#1C43AD" />
+      <stop offset="100%" stop-color="#102A7A" />
+    </linearGradient>
+
+    <!-- Atmospheric radial glow behind the glass page -->
+    <radialGradient id="auraTop" cx="380" cy="300" r="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.34" />
+      <stop offset="45%" stop-color="#5B85F5" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#1C43AD" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="auraBottom" cx="720" cy="820" r="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#102A7A" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Frosted glass page body gradient -->
+    <linearGradient id="pageGrad" x1="244" y1="168" x2="780" y2="856" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="58%" stop-color="#F2F6FF" />
+      <stop offset="100%" stop-color="#DCE7FF" />
+    </linearGradient>
+
+    <!-- Specular diagonal glass sheen across page face -->
+    <linearGradient id="glassSheen" x1="244" y1="168" x2="640" y2="620" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.45" />
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.10" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Specular top-left rim highlight -->
+    <linearGradient id="rimHighlight" x1="244" y1="168" x2="760" y2="820" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="45%" stop-color="#FFFFFF" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.25" />
+    </linearGradient>
+
+    <!-- Folded ear (origami wing) luminous ice-blue gradient -->
+    <linearGradient id="foldGrad" x1="548" y1="168" x2="780" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#DCE7FF" />
+      <stop offset="48%" stop-color="#93C5FD" />
+      <stop offset="100%" stop-color="#5B85F5" />
+    </linearGradient>
+
+    <!-- Specular bent-glass highlight on the fold hypotenuse -->
+    <linearGradient id="foldEdgeHighlight" x1="548" y1="168" x2="780" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="55%" stop-color="#DCE7FF" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#93C5FD" stop-opacity="0.35" />
+    </linearGradient>
+
+    <!-- Under-fold cast shadow on page -->
+    <linearGradient id="foldCastShadow" x1="664" y1="284" x2="540" y2="410" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#102A7A" stop-opacity="0.22" />
+      <stop offset="60%" stop-color="#102A7A" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#102A7A" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Index stroke 1 (deep sapphire) -->
+    <linearGradient id="bar1Grad" x1="328" y1="508" x2="696" y2="572" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1C43AD" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+
+    <!-- Index stroke 2 (luminous ice-blue) -->
+    <linearGradient id="bar2Grad" x1="328" y1="628" x2="584" y2="692" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5B85F5" />
+      <stop offset="100%" stop-color="#93C5FD" />
+    </linearGradient>
+
+    <!-- Soft page shadow -->
+    <filter id="pageShadow" x="150" y="100" width="724" height="876" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="28" result="blur" />
+      <feOffset dx="0" dy="26" result="offsetBlur" />
+      <feFlood flood-color="#07133B" flood-opacity="0.45" result="shadowColor" />
+      <feComposite in="shadowColor" in2="offsetBlur" operator="in" result="coloredShadow" />
+      <feMerge>
+        <feMergeNode in="coloredShadow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Subtle fold shadow -->
+    <filter id="foldBlur" x="440" y="100" width="420" height="420" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="16" />
+    </filter>
+
+    <clipPath id="pageClip">
+      <path d="M 312 168 L 548 168 L 780 400 L 780 788 A 68 68 0 0 1 712 856 L 312 856 A 68 68 0 0 1 244 788 L 244 236 A 68 68 0 0 1 312 168 Z" />
+    </clipPath>
+
+    <clipPath id="iconClip">
+      <rect width="1024" height="1024" rx="224" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#iconClip)">
+    <!-- Full-bleed opaque square background -->
+    <rect width="1024" height="1024" fill="url(#bgGrad)" />
+    <rect width="1024" height="1024" fill="url(#auraTop)" />
+    <rect width="1024" height="1024" fill="url(#auraBottom)" />
+
+  <!-- Elevated Sculptural Page -->
+  <g filter="url(#pageShadow)">
+    <!-- Page body -->
+    <path d="M 312 168 L 548 168 L 780 400 L 780 788 A 68 68 0 0 1 712 856 L 312 856 A 68 68 0 0 1 244 788 L 244 236 A 68 68 0 0 1 312 168 Z" fill="url(#pageGrad)" />
+
+    <!-- Clipped interior details -->
+    <g clip-path="url(#pageClip)">
+      <!-- Frosted glass sheen -->
+      <path d="M 244 168 L 560 168 L 244 580 Z" fill="url(#glassSheen)" />
+
+      <!-- Under-fold cast shadow -->
+      <path d="M 548 168 L 548 344 A 56 56 0 0 0 604 400 L 780 400 L 780 456 L 580 456 A 72 72 0 0 1 508 384 L 508 168 Z" fill="url(#foldCastShadow)" filter="url(#foldBlur)" />
+
+      <!-- Specular top-left inner rim highlight -->
+      <path d="M 312 171 L 548 171 L 777 400 L 777 788 A 65 65 0 0 1 712 853 L 312 853 A 65 65 0 0 1 247 788 L 247 236 A 65 65 0 0 1 312 171 Z" stroke="url(#rimHighlight)" stroke-width="6" fill="none" />
+    </g>
+
+    <!-- Origami Dog-Ear Fold -->
+    <path d="M 548 168 L 548 344 A 56 56 0 0 0 604 400 L 780 400 Z" fill="url(#foldGrad)" />
+
+    <!-- Specular bent-glass highlight on fold crease & outer bevel -->
+    <path d="M 550 172 L 550 344 A 54 54 0 0 0 604 398 L 776 398" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="4" stroke-linecap="round" fill="none" />
+    <path d="M 550 170 L 778 398" stroke="url(#foldEdgeHighlight)" stroke-width="3.5" fill="none" />
+
+    <!-- 2 Bold Content / Index Strokes -->
+    <rect x="328" y="508" width="368" height="64" rx="32" fill="url(#bar1Grad)" />
+    <rect x="328" y="628" width="256" height="64" rx="32" fill="url(#bar2Grad)" />
+  </g>
+  </g>
 </svg>
