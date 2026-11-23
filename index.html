@@ -3,42 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paperless Companion — Native iOS 26 Client for Paperless-ngx</title>
+    <title>Paperless Companion — iOS 26 Client for Paperless-ngx</title>
     <meta
       name="description"
-      content="Offline-first iPhone app for Paperless-ngx with iOS 26 Liquid Glass. Scan and compress multi-page PDFs, triage your inbox with classifier suggestions, and sync directly with your self-hosted server."
+      content="Offline-first iPhone app for Paperless-ngx. Scan multi-page PDFs, save from the Share Sheet, triage your inbox, and sync directly with your server."
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#2454d1" />
     <link rel="canonical" href="https://paperless.milliways.si/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Paperless Companion" />
     <meta property="og:url" content="https://paperless.milliways.si/" />
-    <meta property="og:title" content="Paperless Companion — Native iOS 26 Client for Paperless-ngx" />
+    <meta property="og:title" content="Paperless Companion — iOS 26 Client for Paperless-ngx" />
     <meta
       property="og:description"
-      content="Offline-first iPhone app for Paperless-ngx. Scan and compress multi-page PDFs, triage your inbox, and keep key documents pinned offline."
+      content="Offline-first iPhone app for Paperless-ngx. Scan multi-page PDFs, save from the Share Sheet, triage your inbox, and sync directly with your server."
     />
     <meta property="og:image" content="https://paperless.milliways.si/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Paperless Companion — Native iOS 26 Client for Paperless-ngx"
+      content="Paperless Companion — iOS 26 Client for Paperless-ngx"
     />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Paperless Companion — Native iOS 26 Client for Paperless-ngx" />
+    <meta name="twitter:title" content="Paperless Companion — iOS 26 Client for Paperless-ngx" />
     <meta
       name="twitter:description"
-      content="Offline-first iPhone app for Paperless-ngx. Scan and compress multi-page PDFs, triage your inbox, and keep key documents pinned offline."
+      content="Offline-first iPhone app for Paperless-ngx. Scan multi-page PDFs, save from the Share Sheet, triage your inbox, and sync directly with your server."
     />
     <meta name="twitter:image" content="https://paperless.milliways.si/og.png" />
 
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <script type="application/ld+json">
       {
@@ -47,10 +53,59 @@
         "name": "Paperless Companion",
         "operatingSystem": "iOS 26",
         "applicationCategory": "ProductivityApplication",
-        "description": "Offline-first iPhone companion app for self-hosted Paperless-ngx servers with multi-page PDF scanning, inbox triage, saved views, offline pinning, and Face ID lock.",
+        "description": "Offline-first iPhone companion app for self-hosted Paperless-ngx servers with multi-page PDF scanning, Share Sheet Save to Paperless action, inbox triage, saved views, offline pinning, and Face ID lock.",
         "url": "https://paperless.milliways.si/",
         "downloadUrl": "https://apps.apple.com/app/id6836218613",
         "image": "https://paperless.milliways.si/og.png"
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does Paperless Companion connect to my Paperless-ngx server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It connects directly from your iPhone to your self-hosted Paperless-ngx instance over your local network, an HTTPS reverse proxy, Tailscale, or Cloudflare Access—with support for custom proxy headers and trusted self-signed certificates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which devices and iOS versions are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Paperless Companion is built natively for iPhone on iOS 26 with Liquid Glass. It is an iPhone-only app."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when I scan or edit documents offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pinned documents stay readable in your offline cache. New scans wait in the Upload Outbox and metadata edits queue in Pending Changes, syncing automatically once your server is reachable again."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the app collect analytics or route documents through third-party servers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. There are zero developer servers, zero analytics, and zero telemetry. Credentials and documents stay strictly between your iPhone and your server, protected optionally by Face ID, Touch ID, or Passcode lock."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I import from other apps or automate workflows on iPhone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can send PDFs and images straight from any app using the Save to Paperless action or share extension in the iOS Share Sheet, automate actions with Siri Shortcuts, and locate synced documents from iOS Spotlight search."
+            }
+          }
+        ]
       }
     </script>
 
