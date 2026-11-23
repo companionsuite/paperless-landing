@@ -67,7 +67,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
           <p className="mt-3">
             To support offline browsing, scanning, and queuing, {SITE_CONFIG.appName} stores your configuration,
             synced taxonomy (tags, correspondents, document types, storage paths, custom fields), cached
-            document metadata, queued Outbox PDFs, and pinned Offline Vault PDFs locally on your device using
+            document metadata, queued Outbox PDFs, and pinned offline PDFs locally on your device using
             IndexedDB and browser/app local storage. Deleting the app or resetting to the Demo Sandbox clears
             this local data.
           </p>

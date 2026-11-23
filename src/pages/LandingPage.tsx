@@ -23,60 +23,80 @@ const FEATURES = [
     icon: Server,
     title: 'Direct & Private Connection',
     description:
-      'Connects directly to your own self-hosted Paperless-ngx server over LAN, Tailscale, or HTTPS reverse proxies—with support for Cloudflare Access and custom headers.',
+      'Connects directly to your own self-hosted Paperless-ngx server over LAN, Tailscale, or HTTPS reverse proxies—with support for Cloudflare Access, custom proxy headers, and trusted self-signed certificates.',
   },
   {
     icon: WifiOff,
-    title: 'Offline-First Vault & Outbox',
+    title: 'Offline Mode, Pinning & Queues',
     description:
-      'Pin critical PDFs to your on-device Offline Vault for zero-signal access. Scan and edit metadata offline; changes queue in your Outbox and sync when your server returns.',
+      'Pin critical PDFs for offline access and browse your cached archive when signal drops. Queue scans in the Upload Outbox and metadata edits in Pending Changes—everything syncs when your server returns.',
   },
   {
     icon: Camera,
-    title: 'Multi-Page PDF Scanner',
+    title: 'Multi-Page Scanner & Compression',
     description:
-      'Capture paper receipts and letters with your iPhone camera, import existing photos or PDFs, reorder pages, apply scan enhancement, and compile PDFs on-device.',
+      'Scan paper documents with your iPhone camera or import photos and PDFs. Reorder, rotate, crop, apply grayscale, and shrink PDFs on-device before uploading—plus import from any app via the Share Extension or Siri Shortcuts.',
   },
   {
     icon: Search,
-    title: 'Instant Search & Saved Views',
+    title: 'Inbox Triage, Search & Saved Views',
     description:
-      'Search cached titles, OCR text, ASNs, tags, and correspondents instantly—or query your remote Paperless-ngx server with Saved Views and bulk metadata editing.',
+      'Triage your Inbox with one-tap Paperless classifier suggestions. Browse with the horizontal filter bar, 12 sort options, Saved Views, bulk editing, full-text PDF search, OCR text, notes, and iOS Spotlight indexing.',
   },
   {
     icon: Tags,
-    title: 'Full Taxonomy Management',
+    title: 'Taxonomies & Trash Management',
     description:
-      'Create and edit Tags, Correspondents, Document Types, Storage Paths, and Custom Fields, plus toggle Workflows and Mail Rules right from Settings.',
+      'Create and edit Tags, Correspondents, Document Types, and Storage Paths right from Settings. Filter and edit Custom Field values on documents, and restore or permanently clear soft-deleted items in Trash.',
   },
   {
     icon: FolderLock,
-    title: 'Zero Tracking, Private by Design',
+    title: 'App Lock & Zero Tracking',
     description:
-      'No developer servers, no analytics, and no ads. Your credentials and documents stay between your iPhone and your own Paperless-ngx instance.',
+      'Protect the app and extensions with Face ID, Touch ID, or Passcode. No developer servers, no analytics, and no ads—your credentials and documents stay between your iPhone and your server.',
   },
 ] as const;
 
 const SCREENSHOTS = [
   {
-    src: '/screenshots/01-inbox.png',
-    alt: 'Paperless Companion Inbox Dashboard showing Archive, Vault, and Inbox counts',
-    caption: 'Inbox & Vault Overview',
+    src: '/screenshots/01-inbox.webp',
+    alt: 'Paperless Companion Inbox tab showing incoming PDFs with Paperless classifier suggestion chips and Accept & Done buttons',
+    caption: 'Inbox Triage & Suggestions',
   },
   {
-    src: '/screenshots/02-documents.png',
-    alt: 'Paperless Companion Archive & Search with tags, correspondents, and saved views',
-    caption: 'Archive & Instant Search',
+    src: '/screenshots/02-documents.webp',
+    alt: 'Paperless Companion Documents tab with search field, horizontal filter pills, sort selector, and 2-column PDF grid',
+    caption: 'Documents & Filter Bar',
   },
   {
-    src: '/screenshots/03-detail.png',
-    alt: 'Paperless Companion Document Detail view with PDF preview and metadata editor',
+    src: '/screenshots/03-detail.webp',
+    alt: 'Paperless Companion Document Detail view with inline PDF preview, Fullscreen button, Details/Content/Notes/Access tabs, and metadata editor',
     caption: 'PDF Preview & Metadata',
   },
   {
-    src: '/screenshots/04-scan.png',
-    alt: 'Paperless Companion Multi-page PDF scanner and metadata review',
-    caption: 'Multi-Page Scanner',
+    src: '/screenshots/04-scan.webp',
+    alt: 'Paperless Companion Multi-page Scanner review sheet with page thumbnails, Rotate/Crop controls, quality presets, and Grayscale toggle',
+    caption: 'Multi-Page Scanner & Compression',
+  },
+  {
+    src: '/screenshots/05-saved-views.webp',
+    alt: 'Paperless Companion Custom Queries tab showing Quick Presets and Saved Views with filter rule counts',
+    caption: 'Saved Views & Quick Presets',
+  },
+  {
+    src: '/screenshots/06-offline-mode.webp',
+    alt: 'Paperless Companion Documents grid in Offline Mode showing the cached archive banner and blue pin badges on pinned documents',
+    caption: 'Offline Mode & Pinned Docs',
+  },
+  {
+    src: '/screenshots/07-settings.webp',
+    alt: 'Paperless Companion Settings tab showing Pending Changes queue, Manage Taxonomies, Trash, Offline Storage, and App Lock',
+    caption: 'Settings, Taxonomies & App Lock',
+  },
+  {
+    src: '/screenshots/08-dark-documents.webp',
+    alt: 'Paperless Companion Documents tab in Dark Mode showing the 2-column PDF grid, colored tags, and dark Liquid Glass filter bar',
+    caption: 'Native Dark Mode',
   },
 ] as const;
 
@@ -98,9 +118,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
               </h1>
 
               <p className="mt-5 text-lg leading-relaxed text-[var(--ink-secondary)]">
-                An offline-first iOS client for your self-hosted Paperless-ngx server. Scan
-                multi-page PDFs, triage your inbox, edit metadata, and keep critical records pinned
-                in your Offline Vault.
+                An offline-first iOS client for your self-hosted Paperless-ngx server. Scan and
+                compress multi-page PDFs, triage your inbox with classifier suggestions, edit
+                metadata, and keep key documents pinned for offline access.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -142,11 +162,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
-                  Offline Vault &amp; Outbox queue
+                  Offline pinning &amp; sync queues
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--accent-600)] dark:text-[var(--accent-400)]" />
-                  No analytics or tracking
+                  Face ID lock &amp; zero tracking
                 </li>
               </ul>
             </div>
@@ -155,16 +175,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
               <div className="mx-auto grid max-w-md grid-cols-2 gap-4 sm:max-w-lg sm:gap-5">
                 <div className="overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-2)] shadow-md">
                   <img
-                    src="/screenshots/01-inbox.png"
-                    alt="Paperless Companion Inbox Dashboard"
+                    src="/screenshots/01-inbox.webp"
+                    alt="Paperless Companion Inbox tab with classifier suggestions"
                     className="h-auto w-full object-cover"
                     loading="eager"
                   />
                 </div>
                 <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface-2)] shadow-md">
                   <img
-                    src="/screenshots/02-documents.png"
-                    alt="Paperless Companion Documents Search"
+                    src="/screenshots/02-documents.webp"
+                    alt="Paperless Companion Documents grid with filter bar"
                     className="h-auto w-full object-cover"
                     loading="eager"
                   />
@@ -221,7 +241,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
               Designed for iPhone
             </h2>
             <p className="mt-3 text-base text-[var(--ink-secondary)]">
-              Captured directly from the Paperless Companion iOS app using demo workspace data.
+              Captured directly from the Paperless Companion iOS app using sample workspace data.
             </p>
           </div>
 
